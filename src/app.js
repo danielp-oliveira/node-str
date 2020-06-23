@@ -18,6 +18,9 @@ mongoose.connection.on('error', (err) => {
   process.exit(1)
 })
 
+// Carrega os Models
+require('./models/product')
+
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route')
 const productRoute = require('./routes/product-route')
