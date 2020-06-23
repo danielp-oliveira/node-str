@@ -1,9 +1,22 @@
 'use strict'
 
+require('dotenv/config')
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const app = express()
+
+// Conecta ao banco
+mongoose.connect(process.env.CONNECTION_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+mongoose.connection.on('error', (err) => {
+  console.error(`Mongoose connection error: ${err}`)
+  process.exit(1)
+})
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route')
