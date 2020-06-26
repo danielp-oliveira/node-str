@@ -21,6 +21,7 @@ mongoose.connection.on('error', (err) => {
 // Carrega os Models
 require('./models/product')
 require('./models/customer')
+require('./models/order')
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route')
