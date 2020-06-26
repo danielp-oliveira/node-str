@@ -3,6 +3,15 @@
 const ValidationContract = require('../validators/fluent-validator')
 const repository = require('../repositories/customer-repository')
 
+exports.get = async (req, res, next) => {
+  try {
+    var data = await repository.get()
+    res.status(200).send(data)
+  } catch (e) {
+    res.status(400).send(e)
+  }
+}
+
 exports.post = async (req, res, next) => {
   try {
     let contract = new ValidationContract()
